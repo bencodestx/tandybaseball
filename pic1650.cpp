@@ -10,9 +10,7 @@ int main() {
                 std::size(opcodes) * 2);
   pic1650::LoudEmulator emulator{opcodes, std::cout};
 
-  // Currently running through the number of cycles for playing the opening
-  // music
-  while (emulator.cnt <= 231153u) {
+  while (true) {
     emulator.tick();
   }
 }

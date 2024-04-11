@@ -44,115 +44,115 @@ private:
 public:
   virtual void dispatch(const OpCode opcode) {
     if (is_match(opcode, 0b0000'0000'0000, 0b1111'1111'1111)) {
-      NOP(opcode);
+      NOP();
     } else if (is_match(opcode, 0b0000'0010'0000, 0b1111'1110'0000)) {
-      MOVWF(opcode, f(opcode));
+      MOVWF(f(opcode));
     } else if (is_match(opcode, 0b0000'0100'0000, 0b1111'1111'1111)) {
-      CLRW(opcode);
+      CLRW();
     } else if (is_match(opcode, 0b0000'0110'0000, 0b1111'1110'0000)) {
-      CLRF(opcode, f(opcode));
+      CLRF(f(opcode));
     } else if (is_match(opcode, 0b0000'1000'0000, 0b1111'1100'0000)) {
-      SUBWF(opcode, f(opcode), d(opcode));
+      SUBWF(f(opcode), d(opcode));
     } else if (is_match(opcode, 0b0000'1100'0000, 0b1111'1100'0000)) {
-      DECF(opcode, f(opcode), d(opcode));
+      DECF(f(opcode), d(opcode));
     } else if (is_match(opcode, 0b0001'0000'0000, 0b1111'1100'0000)) {
-      IORWF(opcode, f(opcode), d(opcode));
+      IORWF(f(opcode), d(opcode));
     } else if (is_match(opcode, 0b0001'0100'0000, 0b1111'1100'0000)) {
-      ANDWF(opcode, f(opcode), d(opcode));
+      ANDWF(f(opcode), d(opcode));
     } else if (is_match(opcode, 0b0001'1000'0000, 0b1111'1100'0000)) {
-      XORWF(opcode, f(opcode), d(opcode));
+      XORWF(f(opcode), d(opcode));
     } else if (is_match(opcode, 0b0001'1100'0000, 0b1111'1100'0000)) {
-      ADDWF(opcode, f(opcode), d(opcode));
+      ADDWF(f(opcode), d(opcode));
     } else if (is_match(opcode, 0b0010'0000'0000, 0b1111'1100'0000)) {
-      MOVF(opcode, f(opcode), d(opcode));
+      MOVF(f(opcode), d(opcode));
     } else if (is_match(opcode, 0b0010'0100'0000, 0b1111'1100'0000)) {
-      COMF(opcode, f(opcode), d(opcode));
+      COMF(f(opcode), d(opcode));
     } else if (is_match(opcode, 0b0010'1000'0000, 0b1111'1100'0000)) {
-      INCF(opcode, f(opcode), d(opcode));
+      INCF(f(opcode), d(opcode));
     } else if (is_match(opcode, 0b0010'1100'0000, 0b1111'1100'0000)) {
-      DECFSZ(opcode, f(opcode), d(opcode));
+      DECFSZ(f(opcode), d(opcode));
     } else if (is_match(opcode, 0b0011'0000'0000, 0b1111'1100'0000)) {
-      RRF(opcode, f(opcode), d(opcode));
+      RRF(f(opcode), d(opcode));
     } else if (is_match(opcode, 0b0011'0100'0000, 0b1111'1100'0000)) {
-      RLF(opcode, f(opcode), d(opcode));
+      RLF(f(opcode), d(opcode));
     } else if (is_match(opcode, 0b0011'1000'0000, 0b1111'1100'0000)) {
-      SWAPF(opcode, f(opcode), d(opcode));
+      SWAPF(f(opcode), d(opcode));
     } else if (is_match(opcode, 0b0011'1100'0000, 0b1111'1100'0000)) {
-      INCFSZ(opcode, f(opcode), d(opcode));
+      INCFSZ(f(opcode), d(opcode));
     } else if (is_match(opcode, 0b0100'0000'0000, 0b1111'0000'0000)) {
-      BCF(opcode, f(opcode), b(opcode));
+      BCF(f(opcode), b(opcode));
     } else if (is_match(opcode, 0b0101'0000'0000, 0b1111'0000'0000)) {
-      BSF(opcode, f(opcode), b(opcode));
+      BSF(f(opcode), b(opcode));
     } else if (is_match(opcode, 0b0110'0000'0000, 0b1111'0000'0000)) {
-      BTFSC(opcode, f(opcode), b(opcode));
+      BTFSC(f(opcode), b(opcode));
     } else if (is_match(opcode, 0b0111'0000'0000, 0b1111'0000'0000)) {
-      BTFSS(opcode, f(opcode), b(opcode));
+      BTFSS(f(opcode), b(opcode));
     } else if (is_match(opcode, 0b1000'0000'0000, 0b1111'0000'0000)) {
-      RETLW(opcode, k8(opcode));
+      RETLW(k8(opcode));
     } else if (is_match(opcode, 0b1001'0000'0000, 0b1111'0000'0000)) {
-      CALL(opcode, k8(opcode));
+      CALL(k8(opcode));
     } else if (is_match(opcode, 0b1010'0000'0000, 0b1110'0000'0000)) {
-      GOTO(opcode, k9(opcode));
+      GOTO(k9(opcode));
     } else if (is_match(opcode, 0b1100'0000'0000, 0b1111'0000'0000)) {
-      MOVLW(opcode, k8(opcode));
+      MOVLW(k8(opcode));
     } else if (is_match(opcode, 0b1101'0000'0000, 0b1111'0000'0000)) {
-      IORLW(opcode, k8(opcode));
+      IORLW(k8(opcode));
     } else if (is_match(opcode, 0b1110'0000'0000, 0b1111'0000'0000)) {
-      ANDLW(opcode, k8(opcode));
+      ANDLW(k8(opcode));
     } else if (is_match(opcode, 0b1111'0000'0000, 0b1111'0000'0000)) {
-      XORLW(opcode, k8(opcode));
+      XORLW(k8(opcode));
     } else {
       ILLEGAL_INSTRUCTION(opcode);
     }
   }
 
-  virtual void NOP(const OpCode){};
-  virtual void MOVWF(const OpCode, const std::uint8_t f) = 0;
-  virtual void CLRW(const OpCode) = 0;
-  virtual void CLRF(const OpCode, const std::uint8_t f) = 0;
-  virtual void SUBWF(const OpCode, const std::uint8_t f,
+  virtual void NOP(){};
+  virtual void MOVWF(const std::uint8_t f) = 0;
+  virtual void CLRW() = 0;
+  virtual void CLRF(const std::uint8_t f) = 0;
+  virtual void SUBWF(const std::uint8_t f,
                      const std::uint8_t d) = 0;
-  virtual void DECF(const OpCode, const std::uint8_t f,
+  virtual void DECF(const std::uint8_t f,
                     const std::uint8_t d) = 0;
-  virtual void IORWF(const OpCode, const std::uint8_t f,
+  virtual void IORWF(const std::uint8_t f,
                      const std::uint8_t d) = 0;
-  virtual void ANDWF(const OpCode, const std::uint8_t f,
+  virtual void ANDWF(const std::uint8_t f,
                      const std::uint8_t d) = 0;
-  virtual void XORWF(const OpCode, const std::uint8_t f,
+  virtual void XORWF(const std::uint8_t f,
                      const std::uint8_t d) = 0;
-  virtual void ADDWF(const OpCode, const std::uint8_t f,
+  virtual void ADDWF(const std::uint8_t f,
                      const std::uint8_t d) = 0;
-  virtual void MOVF(const OpCode, const std::uint8_t f,
+  virtual void MOVF(const std::uint8_t f,
                     const std::uint8_t d) = 0;
-  virtual void COMF(const OpCode, const std::uint8_t f,
+  virtual void COMF(const std::uint8_t f,
                     const std::uint8_t d) = 0;
-  virtual void INCF(const OpCode, const std::uint8_t f,
+  virtual void INCF(const std::uint8_t f,
                     const std::uint8_t d) = 0;
-  virtual void DECFSZ(const OpCode, const std::uint8_t f,
+  virtual void DECFSZ(const std::uint8_t f,
                       const std::uint8_t d) = 0;
-  virtual void RRF(const OpCode, const std::uint8_t f,
+  virtual void RRF(const std::uint8_t f,
                    const std::uint8_t d) = 0;
-  virtual void RLF(const OpCode, const std::uint8_t f,
+  virtual void RLF(const std::uint8_t f,
                    const std::uint8_t d) = 0;
-  virtual void SWAPF(const OpCode, const std::uint8_t f,
+  virtual void SWAPF(const std::uint8_t f,
                      const std::uint8_t d) = 0;
-  virtual void INCFSZ(const OpCode, const std::uint8_t f,
+  virtual void INCFSZ(const std::uint8_t f,
                       const std::uint8_t d) = 0;
-  virtual void BCF(const OpCode, const std::uint8_t f,
+  virtual void BCF(const std::uint8_t f,
                    const std::uint8_t b) = 0;
-  virtual void BSF(const OpCode, const std::uint8_t f,
+  virtual void BSF(const std::uint8_t f,
                    const std::uint8_t b) = 0;
-  virtual void BTFSC(const OpCode, const std::uint8_t f,
+  virtual void BTFSC(const std::uint8_t f,
                      const std::uint8_t b) = 0;
-  virtual void BTFSS(const OpCode, const std::uint8_t f,
+  virtual void BTFSS(const std::uint8_t f,
                      const std::uint8_t b) = 0;
-  virtual void RETLW(const OpCode, const std::uint8_t k) = 0;
-  virtual void CALL(const OpCode, const std::uint8_t k) = 0;
-  virtual void GOTO(const OpCode, const std::uint16_t k) = 0;
-  virtual void MOVLW(const OpCode, const std::uint8_t k) = 0;
-  virtual void IORLW(const OpCode, const std::uint8_t k) = 0;
-  virtual void ANDLW(const OpCode, const std::uint8_t k) = 0;
-  virtual void XORLW(const OpCode, const std::uint8_t k) = 0;
+  virtual void RETLW(const std::uint8_t k) = 0;
+  virtual void CALL(const std::uint8_t k) = 0;
+  virtual void GOTO(const std::uint16_t k) = 0;
+  virtual void MOVLW(const std::uint8_t k) = 0;
+  virtual void IORLW(const std::uint8_t k) = 0;
+  virtual void ANDLW(const std::uint8_t k) = 0;
+  virtual void XORLW(const std::uint8_t k) = 0;
 
   virtual void ILLEGAL_INSTRUCTION(const OpCode opcode) {
     throw std::runtime_error(
@@ -167,131 +167,131 @@ private:
 public:
   explicit OpCodeStream(std::ostream &os) noexcept : os{os} {}
 
-  void NOP(const OpCode) override { os << std::format("{:8s}\n", "NOP"); };
+  void NOP() override { os << std::format("{:8s}\n", "NOP"); };
 
-  void MOVWF(const OpCode, const std::uint8_t f) override {
+  void MOVWF(const std::uint8_t f) override {
     os << std::format("{:8s} F{:<2d}\n", "MOVWF", f);
   }
 
-  void CLRW(const OpCode) override { os << std::format("{:8s}\n", "CLRW"); }
+  void CLRW() override { os << std::format("{:8s}\n", "CLRW"); }
 
-  void CLRF(const OpCode, const std::uint8_t f) override {
+  void CLRF(const std::uint8_t f) override {
     os << std::format("{:8s} F{:<2d}\n", "CLRF", f);
   }
 
-  void SUBWF(const OpCode, const std::uint8_t f,
+  void SUBWF(const std::uint8_t f,
              const std::uint8_t d) override {
     os << std::format("{:8s} F{:<2d} D{:1d}\n", "SUBWF", f, d);
   }
 
-  void DECF(const OpCode, const std::uint8_t f, const std::uint8_t d) override {
+  void DECF(const std::uint8_t f, const std::uint8_t d) override {
     os << std::format("{:8s} F{:<2d} D{:1d}\n", "DECF", f, d);
   }
 
-  void IORWF(const OpCode, const std::uint8_t f,
+  void IORWF(const std::uint8_t f,
              const std::uint8_t d) override {
     os << std::format("{:8s} F{:<2d} D{:1d}\n", "IORWF", f, d);
   }
 
-  void ANDWF(const OpCode, const std::uint8_t f,
+  void ANDWF(const std::uint8_t f,
              const std::uint8_t d) override {
     os << std::format("{:8s} F{:<2d} D{:1d}\n", "ANDWF", f, d);
   }
 
-  void XORWF(const OpCode, const std::uint8_t f,
+  void XORWF(const std::uint8_t f,
              const std::uint8_t d) override {
     os << std::format("{:8s} F{:<2d} D{:1d}\n", "XORWF", f, d);
   }
 
-  void ADDWF(const OpCode, const std::uint8_t f,
+  void ADDWF(const std::uint8_t f,
              const std::uint8_t d) override {
     os << std::format("{:8s} F{:<2d} D{:1d}\n", "ADDWF", f, d);
   }
 
-  void MOVF(const OpCode, const std::uint8_t f, const std::uint8_t d) override {
+  void MOVF(const std::uint8_t f, const std::uint8_t d) override {
     os << std::format("{:8s} F{:<2d} D{:1d}\n", "MOVF", f, d);
   }
 
-  void COMF(const OpCode, const std::uint8_t f, const std::uint8_t d) override {
+  void COMF(const std::uint8_t f, const std::uint8_t d) override {
     os << std::format("{:8s} F{:<2d} D{:1d}\n", "COMF", f, d);
   }
 
-  void INCF(const OpCode, const std::uint8_t f, const std::uint8_t d) override {
+  void INCF(const std::uint8_t f, const std::uint8_t d) override {
     os << std::format("{:8s} F{:<2d} D{:1d}\n", "INCF", f, d);
   }
 
-  void DECFSZ(const OpCode, const std::uint8_t f,
+  void DECFSZ(const std::uint8_t f,
               const std::uint8_t d) override {
     os << std::format("{:8s} F{:<2d} D{:1d}\n", "DECFSZ", f, d);
   }
 
-  void RRF(const OpCode, const std::uint8_t f, const std::uint8_t d) override {
+  void RRF(const std::uint8_t f, const std::uint8_t d) override {
     os << std::format("{:8s} F{:<2d} D{:1d}\n", "RRF", f, d);
   }
 
-  void RLF(const OpCode, const std::uint8_t f, const std::uint8_t d) override {
+  void RLF(const std::uint8_t f, const std::uint8_t d) override {
     os << std::format("{:8s} F{:<2d} D{:1d}\n", "RLF", f, d);
   }
 
-  void SWAPF(const OpCode, const std::uint8_t f,
+  void SWAPF(const std::uint8_t f,
              const std::uint8_t d) override {
     os << std::format("{:8s} F{:<2d} D{:1d}\n", "SWAPF", f, d);
   }
 
-  void INCFSZ(const OpCode, const std::uint8_t f,
+  void INCFSZ(const std::uint8_t f,
               const std::uint8_t d) override {
     os << std::format("{:8s} F{:<2d} D{:1d}\n", "INCFSZ", f, d);
   }
 
-  void BCF(const OpCode, const std::uint8_t f, const std::uint8_t b) override {
+  void BCF(const std::uint8_t f, const std::uint8_t b) override {
     os << std::format("{:8s} F{:<2d} B{:1d}\n", "BCF", f, b);
   }
 
-  void BSF(const OpCode, const std::uint8_t f, const std::uint8_t b) override {
+  void BSF(const std::uint8_t f, const std::uint8_t b) override {
     os << std::format("{:8s} F{:<2d} B{:1d}\n", "BSF", f, b);
   }
 
-  void BTFSC(const OpCode, const std::uint8_t f,
+  void BTFSC(const std::uint8_t f,
              const std::uint8_t b) override {
     os << std::format("{:8s} F{:<2d} B{:1d}\n", "BTFSC", f, b);
   }
 
-  void BTFSS(const OpCode, const std::uint8_t f,
+  void BTFSS(const std::uint8_t f,
              const std::uint8_t b) override {
     os << std::format("{:8s} F{:<2d} B{:1d}\n", "BTFSS", f, b);
   }
 
-  void RETLW(const OpCode, const std::uint8_t k) override {
+  void RETLW(const std::uint8_t k) override {
     os << std::format("{:8s} {:03d} x{:02X}   b{:08b} o{:03o}\n", "RETLW", k, k,
                       k, k);
   }
 
-  void CALL(const OpCode, const std::uint8_t k) override {
+  void CALL(const std::uint8_t k) override {
     os << std::format("{:8s} {:<3d} x{:02X}   b{:08b} o{:03o}\n", "CALL", k, k,
                       k, k);
   }
 
-  void GOTO(const OpCode, const std::uint16_t k) override {
+  void GOTO(const std::uint16_t k) override {
     os << std::format("{:8s} {:<3d} x{:03X} b{:09b} o{:03o}\n", "GOTO", k, k, k,
                       k);
   }
 
-  void MOVLW(const OpCode, const std::uint8_t k) override {
+  void MOVLW(const std::uint8_t k) override {
     os << std::format("{:8s} {:<3d} x{:02X}   b{:08b} o{:03o}\n", "MOVLW", k, k,
                       k, k);
   }
 
-  void IORLW(const OpCode, const std::uint8_t k) override {
+  void IORLW(const std::uint8_t k) override {
     os << std::format("{:8s} {:<3d} x{:02X}   b{:08b} o{:03o}\n", "IORLW", k, k,
                       k, k);
   }
 
-  void ANDLW(const OpCode, const std::uint8_t k) override {
+  void ANDLW(const std::uint8_t k) override {
     os << std::format("{:8s} {:<3d} x{:02X}   b{:08b} o{:03o}\n", "ANDLW", k, k,
                       k, k);
   }
 
-  void XORLW(const OpCode, const std::uint8_t k) override {
+  void XORLW(const std::uint8_t k) override {
     os << std::format("{:8s} {:<3d} x{:02X}   b{:08b} o{:03o}\n", "XORLW", k, k,
                       k, k);
   }
@@ -311,6 +311,7 @@ protected:
     std::uint8_t reserved : 5;
   } status;
   std::array<std::uint8_t, 23> general_purpose_registers{};
+  std::array<std::uint8_t, 4> inputs{0xffu, 0xffu, 0xffu, 0xffu};
   std::array<std::uint8_t, 4> output_latches{};
   std::array<std::uint16_t, 2> stack{0xffffu, 0xffffu};
 
@@ -385,7 +386,7 @@ protected:
   }
 
   virtual std::uint8_t read_io_port(const std::uint8_t port) {
-    return 0xffu & output_latches[port];
+    return output_latches[port] & inputs[port];
   }
 
 public:
@@ -398,21 +399,39 @@ public:
     dispatch(opcode);
   }
 
-  void NOP(const OpCode) override{};
+  void input(const std::size_t port, const std::size_t bit, const bool set) {
+    if (set) {
+      input_high(port, bit);
+    } else {
+      input_low(port, bit);
+    }
+  }
 
-  void MOVWF(const OpCode, const std::uint8_t f) override { write_file(f, w); }
+  void input_high(const std::size_t port, const std::size_t bit) {
+    const std::uint8_t bit_position = (1u << bit);
+    inputs[port] = (inputs[port] & ~bit_position) | bit_position;
+  }
 
-  void CLRW(const OpCode) override {
+  void input_low(const std::size_t port, const std::size_t bit) {
+    const std::uint8_t bit_position = (1u << bit);
+    inputs[port] = (inputs[port] & ~bit_position);
+  }
+
+  void NOP() override{};
+
+  void MOVWF(const std::uint8_t f) override { write_file(f, w); }
+
+  void CLRW() override {
     w = 0;
     status.Z = 0b1;
   }
 
-  void CLRF(const OpCode, const std::uint8_t f) override {
+  void CLRF(const std::uint8_t f) override {
     write_file(f, 0u);
     status.Z = 0b1;
   }
 
-  void SUBWF(const OpCode, const std::uint8_t f,
+  void SUBWF(const std::uint8_t f,
              const std::uint8_t d) override {
 
     const auto value = read_file(f);
@@ -422,34 +441,34 @@ public:
     status.Z = (written == 0u);
   }
 
-  void DECF(const OpCode, const std::uint8_t f, const std::uint8_t d) override {
+  void DECF(const std::uint8_t f, const std::uint8_t d) override {
     const auto value = read_file(f);
     const auto written = write_file(f, d, value - 1u);
     status.Z = (written == 0u);
   }
 
-  void IORWF(const OpCode, const std::uint8_t f,
+  void IORWF(const std::uint8_t f,
              const std::uint8_t d) override {
     const auto value = read_file(f);
     const auto written = write_file(f, d, value | w);
     status.Z = (written == 0u);
   }
 
-  void ANDWF(const OpCode, const std::uint8_t f,
+  void ANDWF(const std::uint8_t f,
              const std::uint8_t d) override {
     const auto value = read_file(f);
     const auto written = write_file(f, d, value & w);
     status.Z = (written == 0u);
   }
 
-  void XORWF(const OpCode, const std::uint8_t f,
+  void XORWF(const std::uint8_t f,
              const std::uint8_t d) override {
     const auto value = read_file(f);
     const auto written = write_file(f, d, value ^ w);
     status.Z = (written == 0u);
   }
 
-  void ADDWF(const OpCode, const std::uint8_t f,
+  void ADDWF(const std::uint8_t f,
              const std::uint8_t d) override {
     const auto value = read_file(f);
     status.C = ((std::uint16_t{w} + std::uint16_t{value}) > 0xffu);
@@ -458,25 +477,25 @@ public:
     status.Z = (written == 0u);
   }
 
-  void MOVF(const OpCode, const std::uint8_t f, const std::uint8_t d) override {
+  void MOVF(const std::uint8_t f, const std::uint8_t d) override {
     const auto value = read_file(f);
     const auto written = write_file(f, d, value);
     status.Z = (written == 0u);
   }
 
-  void COMF(const OpCode, const std::uint8_t f, const std::uint8_t d) override {
+  void COMF(const std::uint8_t f, const std::uint8_t d) override {
     const auto value = read_file(f);
     const auto written = write_file(f, d, ~value);
     status.Z = (written == 0u);
   }
 
-  void INCF(const OpCode, const std::uint8_t f, const std::uint8_t d) override {
+  void INCF(const std::uint8_t f, const std::uint8_t d) override {
     const auto value = read_file(f);
     const auto written = write_file(f, d, value + 1u);
     status.Z = (written == 0u);
   }
 
-  void DECFSZ(const OpCode, const std::uint8_t f,
+  void DECFSZ(const std::uint8_t f,
               const std::uint8_t d) override {
     const auto value = read_file(f);
     const auto written = write_file(f, d, value - 1u);
@@ -485,25 +504,25 @@ public:
     }
   }
 
-  void RRF(const OpCode, const std::uint8_t f, const std::uint8_t d) override {
+  void RRF(const std::uint8_t f, const std::uint8_t d) override {
     const auto value = read_file(f);
     status.C = value & 0b1;
     write_file(f, d, (value >> 1) | (status.C << 7));
   }
 
-  void RLF(const OpCode, const std::uint8_t f, const std::uint8_t d) override {
+  void RLF(const std::uint8_t f, const std::uint8_t d) override {
     const auto value = read_file(f);
     status.C = value >> 7;
     write_file(f, d, (value << 1) | status.C);
   }
 
-  void SWAPF(const OpCode, const std::uint8_t f,
+  void SWAPF(const std::uint8_t f,
              const std::uint8_t d) override {
     const auto value = read_file(f);
     write_file(f, d, (value << 4) | (value >> 4));
   }
 
-  void INCFSZ(const OpCode, const std::uint8_t f,
+  void INCFSZ(const std::uint8_t f,
               const std::uint8_t d) override {
     const auto value = read_file(f);
     const auto written = write_file(f, d, value + 1u);
@@ -512,17 +531,17 @@ public:
     }
   }
 
-  void BCF(const OpCode, const std::uint8_t f, const std::uint8_t b) override {
+  void BCF(const std::uint8_t f, const std::uint8_t b) override {
     const auto value = read_file(f);
     write_file(f, value & ~(0b1 << b));
   }
 
-  void BSF(const OpCode, const std::uint8_t f, const std::uint8_t b) override {
+  void BSF(const std::uint8_t f, const std::uint8_t b) override {
     const auto value = read_file(f);
     write_file(f, value | (0b1 << b));
   }
 
-  void BTFSC(const OpCode, const std::uint8_t f,
+  void BTFSC(const std::uint8_t f,
              const std::uint8_t b) override {
     const auto value = read_file(f);
     if (0u == (value & (0b1 << b))) {
@@ -530,7 +549,7 @@ public:
     }
   }
 
-  void BTFSS(const OpCode, const std::uint8_t f,
+  void BTFSS(const std::uint8_t f,
              const std::uint8_t b) override {
     const auto value = read_file(f);
     if (0u != (value & (0b1 << b))) {
@@ -538,37 +557,44 @@ public:
     }
   }
 
-  void RETLW(const OpCode, const std::uint8_t k) override {
+  void RETLW(const std::uint8_t k) override {
     w = k;
     pc = stack[0];
     stack[0] = stack[1];
     stack[1] = 0xffffu;
   }
 
-  void CALL(const OpCode, const std::uint8_t k) override {
+  void CALL(const std::uint8_t k) override {
     stack[1] = stack[0];
     stack[0] = pc & 0x1ffu;
     pc = k;
   }
 
-  void GOTO(const OpCode, const std::uint16_t k) override { pc = k; }
+  void GOTO(const std::uint16_t k) override { pc = k; }
 
-  void MOVLW(const OpCode, const std::uint8_t k) override { w = k; }
+  void MOVLW(const std::uint8_t k) override { w = k; }
 
-  void IORLW(const OpCode, const std::uint8_t k) override {
+  void IORLW(const std::uint8_t k) override {
     w = w | k;
     status.Z = (w == 0u);
   }
 
-  void ANDLW(const OpCode, const std::uint8_t k) override {
+  void ANDLW(const std::uint8_t k) override {
     w = w & k;
     status.Z = (w == 0u);
   }
 
-  void XORLW(const OpCode, const std::uint8_t k) override {
+  void XORLW(const std::uint8_t k) override {
     w = w ^ k;
     status.Z = (w == 0u);
   }
+
+  std::uint16_t PC() const { return pc; }
+
+  auto a() const { return output_latches[0]; }
+  auto b() const { return output_latches[1]; }
+  auto c() const { return output_latches[2]; }
+  auto d() const { return output_latches[3]; }
 };
 
 class LoudEmulator final : public Emulator {
@@ -582,7 +608,7 @@ public:
 
   LoudEmulator(const std::array<OpCode, 512> &rom, std::ostream &os)
       : Emulator{rom}, opcode_stream{ss}, os{os} {
-    os << "cnt,starting_pc,rtcc,pc,C,DC,Z,fsr,w,out0,out1,out2,out3,f9,f10,f11,"
+    os << "cnt,starting_pc,rtcc,pc,C,DC,Z,fsr,w,RA,RB,RC,RD,f9,f10,f11,"
           "r12,f13,f14,f15,f16,f17,f18,f19,f20,f21,f22,f23,f24,f25,f26,f27,f28,"
           "r29,f30,f31,stack0,stack1,opcode,decoded"
        << std::endl;
@@ -597,7 +623,7 @@ public:
                       starting_pc, rtcc, pc, +status.C, +status.DC, +status.Z,
                       fsr, w);
     for (const auto x : output_latches) {
-      os << std::format("{:d},", x);
+      os << std::format("0b{:08b},", x);
     }
     for (const auto x : general_purpose_registers) {
       os << std::format("{:d},", x);
